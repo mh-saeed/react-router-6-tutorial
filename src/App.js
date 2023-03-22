@@ -1,5 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SharedLayout, Home, About, Products, Error } from "./pages";
+import {
+  SharedLayout,
+  Home,
+  About,
+  Products,
+  SingleProduct,
+  Error,
+} from "./pages";
 
 function App() {
   return (
@@ -9,6 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:productId" element={<SingleProduct />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
