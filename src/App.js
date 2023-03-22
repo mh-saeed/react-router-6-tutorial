@@ -4,7 +4,6 @@ import { Home, About, Products, Error } from "./pages";
 function App() {
   return (
     <BrowserRouter>
-      <nav>Navbar</nav>
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="about" element={<About />} />
@@ -12,7 +11,6 @@ function App() {
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
-      <footer>Footer</footer>
     </BrowserRouter>
   );
 }
