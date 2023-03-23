@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   SharedLayout,
@@ -6,9 +7,14 @@ import {
   Products,
   SingleProduct,
   Error,
+  Login,
+  Dashboard,
+  ProtectedRoute,
 } from "./pages";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -17,6 +23,15 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
           <Route path="products/:productId" element={<SingleProduct />} />
+          <Route path="login" element={<Login setUser={setUser} />} />
+          <Route
+            path="dashboard"
+            element={
+              <ProtectedRoute user={user}>
+                <Dashboard user={user} />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
